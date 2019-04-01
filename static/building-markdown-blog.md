@@ -163,7 +163,7 @@ Finally, the last step is to make sure that the Vue Router correctly redirects v
 
 Now, the URLs ``/blog/example.md`` and ``/blog/another.md`` both map to the same component.
 
-#### Easy, peasy, lemon squeazy
+#### Easy, peasy, lemon squeezy
 
 And that is pretty much it. With this setup, I can just write up a post in Atom and directly push it to Github. (See the [furry-potato](https://github.com/pkrll/furry-potato) repository for more information on this.)
 
