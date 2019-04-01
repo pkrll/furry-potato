@@ -22,7 +22,7 @@ function start(indexFile) {
 
 	const date = new Date();
 	metadata.date = date.toJSON();
-
+	metadata.path = inputFile.substr(inputFile.lastIndexOf('/') + 1);
 	fs.readFile(indexFile, (err, data) => {
 		if (err) throw err;
 
