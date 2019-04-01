@@ -1,5 +1,7 @@
-INDEX=index.json
+.PHONY: all node add commit push
+
 INPUT=
+POSTS=index.json
 
 all: node add commit
 
@@ -8,7 +10,7 @@ node:
 
 add:
 	git add $(INPUT)
-	git add $(INDEX)
+	git add $(POSTS)
 
 commit:
 	git commit -S -m "Added $$INPUT"
