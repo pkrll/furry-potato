@@ -3,6 +3,10 @@
 		{
 			"title": "Hello World",
 			"path": "helloworld.md"
+		},
+		{
+			"title": "Furry potato",
+			"path": "flurrypotato.md"
 		}
 	]
 }

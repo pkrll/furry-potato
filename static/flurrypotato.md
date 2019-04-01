@@ -1,7 +1,3 @@
-# Hello World
-
-This is a test
-
 # flurrypotato
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam bibendum, purus eu aliquam dapibus, eros ligula facilisis orci, sed porta mauris arcu ut dui. Duis blandit dolor quam, ac sollicitudin erat placerat fermentum. Vestibulum luctus dapibus nunc, eget iaculis nulla blandit eu. Praesent accumsan viverra elit. Donec urna sapien, bibendum in pretium at, fringilla at ipsum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed in gravida dolor. Etiam elementum arcu a augue pharetra, et consequat lorem dapibus. Pellentesque id congue massa. Etiam id erat ultricies, condimentum ipsum fermentum, dapibus dolor. Phasellus libero lorem, blandit id malesuada sed, ultrices vel dolor.
