@@ -16,6 +16,36 @@ Curabitur non fermentum arcu. Pellentesque aliquet velit pellentesque, dapibus o
 
 Aliquam erat volutpat. Pellentesque volutpat cursus nisl et tempor. Aenean vitae lectus ac sem vulputate tempor. Cras sollicitudin, sem vel eleifend accumsan, justo nisl luctus nisi, sed laoreet metus ligula quis magna. Phasellus lectus risus, lacinia et purus eu, sollicitudin consectetur neque. Morbi auctor viverra massa quis suscipit. Nullam quis ante vestibulum, scelerisque velit id, ullamcorper justo. Sed non arcu fermentum, ultricies ante et, bibendum justo. Sed at consectetur sapien, eget ullamcorper odio. Nulla vestibulum at magna ac dapibus. Sed ullamcorper congue venenatis. In a libero magna. Vestibulum ullamcorper elementum vehicula.
 
-```
-Nunc maximus turpis eleifend mauris vehicula, eu elementum lacus dictum. Sed egestas pretium lacus, ut interdum arcu faucibus et. Nunc in ligula vel orci dapibus tempus. Mauris felis augue, placerat quis congue eget, gravida at orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus quis odio pulvinar, consectetur augue id, vestibulum odio. Ut blandit urna ut nisi gravida pulvinar. Aliquam erat volutpat. In tincidunt, ante quis laoreet pellentesque, massa felis faucibus ligula, nec rutrum ipsum orci blandit justo. Ut elementum condimentum enim, eget porttitor quam pretium ut. Fusce pellentesque iaculis varius. Phasellus sit amet enim quis tortor dignissim ultricies id non nibh. Quisque sed nunc gravida, tempor turpis ac, euismod mi.
+```javascript
+import marked from 'marked';
+import posts from "@/assets/posts.md"
+import hljs from 'highlight.js';
+import javascript from 'highlight.js/lib/languages/javascript';
+import 'highlight.js/styles/gruvbox-dark.css';
+
+hljs.registerLanguage('javascript', javascript);
+
+export default {
+  name: 'Blog',
+  data: function() {
+    return {
+      html: posts.html,
+      blogs: {}
+    }
+  },
+  created: function() {
+    fetch("https://raw.githubusercontent.com/pkrll/furry-potato/master/index.json")
+          .then(r => r.json())
+          .then(t => this.blogs = t.posts)
+          .catch(e => console.log(e));
+  },
+  mounted: function() {
+    hljs.initHighlightingOnLoad();
+  },
+  computed: {
+    markdownText() {
+      return marked(posts.body);
+    }
+  }
+}
 ```
