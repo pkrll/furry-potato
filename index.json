@@ -9,7 +9,7 @@
     },
     {
       "title": "Building a Markdown-based blog with Vue + Github",
-      "summary": "When I recently re-did my site (the result of which you are seeing now!), I held off adding a blog section. The reason being, I wasn't sure how to do it. In the past, I would have built a small CMS from scratch with an SQL database connection along with a backend tool for creating, editing and removing posts.",
+      "summary": "So, I've brought back the blog. This time, instead of using a traditional CMS, I decided to hack together my own Markdown-based blog. The twist: The posts are all stored in a repository on Github.",
       "date": "2019-04-01T15:00:52.494Z",
       "path": "static/",
       "name": "building-markdown-blog.md"
