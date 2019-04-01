@@ -72,7 +72,8 @@ class Publisher {
 
 		const metadata = this.processFile(filePath);
 		metadata.date  = date.toJSON();
-		metadata.path  = paths.STATIC + filePath.substr(filePath.lastIndexOf('/') + 1);
+		metadata.path  = paths.STATIC;
+		metadata.name  = filePath.substr(filePath.lastIndexOf('/') + 1);
 
 		fs.readFile(this.indexFile, (err, data) => {
 			if (err) throw err;
@@ -83,7 +84,7 @@ class Publisher {
 			fs.writeFile(this.indexFile, JSON.stringify(content, null, 2), (err) => {
 				if(err) throw err;
 
-				this.move(filePath, metadata.path);
+				this.move(filePath, metadata.path + metadata.name);
 			});
 		});
 	}
