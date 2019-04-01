@@ -2,7 +2,7 @@
   "posts": [
     {
       "title": "Customizing the Console Output in Node",
-      "summary": "Working with Node, the ``console.log`` command is never far away. Be it either for debugging purposes or user interaction, the ``console`` module provides a simple way of outputting a string to the terminal.",
+      "summary": "Sometimes the plain output of the Console.log is just not enough. Here's all you need to know to get some color in your console!",
       "date": "2019-04-01T21:19:27.036Z",
       "path": "static/",
       "name": "colorful-console.md"
