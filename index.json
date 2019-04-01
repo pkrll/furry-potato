@@ -1,34 +1,8 @@
 {
-	"posts": [
-		{
-			"title": "Hello World is a Better Phrase Than Gargoyle User",
-			"summary": "Aliquam erat volutpat. Pellentesque volutpat cursus nisl et tempor. Aenean vitae lectus ac sem vulputate tempor.",
-			"path": "helloworld.md"
-		},
-		{
-			"title": "Implementing a Furry Potato For Cats",
-			"summary": "ACras sollicitudin, sem vel eleifend accumsan, justo nisl luctus nisi, sed laoreet metus ligula quis magna.",
-			"path": "flurrypotato.md"
-		},
-		{
-			"title": "Did You Catch a Dinosaur?",
-			"summary": "Morbi auctor viverra massa quis suscipit. Nullam quis ante vestibulum, scelerisque velit id, ullamcorper justo. Sed non arcu fermentum, ultricies ante et, bibendum justo.",
-			"path": "flurrypotato.md"
-		},
-		{
-			"title": "My Potato is as Furry as Your Cat",
-			"summary": "Vestibulum pretium nunc eu cursus malesuada. Nam tempor metus sit amet felis iaculis, sed mollis purus lobortis. Proin et congue justo. Suspendisse et ligula dui. Maecenas venenatis semper risus, eu accumsan mauris consequat laoreet.",
-			"path": "flurrypotato.md"
-		},
-		{
-			"title": "Potato Does What Potato Do, But Never Forget",
-			"summary": "Duis laoreet lacus dolor, congue cursus libero commodo eget. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla placerat volutpat porta.",
-			"path": "flurrypotato.md"
-		},
-		{
-			"title": "Testing 123",
-			"summary": "This is just for testing purposes",
-			"path": "flurrypotatoes.md"
-		}
-	]
+  "posts": [
+    {
+      "title": "Testing 123",
+      "date": "2019-04-01T13:00:15.025Z"
+    }
+  ]
 }
