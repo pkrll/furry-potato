@@ -2,11 +2,12 @@
 
 INPUT=
 POSTS=index.json
+P_APP=publisher.js
 
 all: node add commit
 
 node:
-	node app.js $(INPUT)
+	node $(P_APP) $(INPUT)
 
 add:
 	git add $(INPUT)
