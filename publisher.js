@@ -3,8 +3,8 @@ const fs = require('fs');
 const color = require('./.support/color.js')();
 
 const paths = {
-	DRAFTS: "./drafts/",
-	STATIC: "./static/"
+	DRAFTS: "drafts/",
+	STATIC: "static/"
 };
 
 class Publisher {
