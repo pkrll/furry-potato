@@ -4,7 +4,7 @@
 
 Working with Node, the ``console.log`` command is never far away. Be it either for debugging purposes or user interaction, the ``console`` module provides a simple way of outputting a string to the terminal.
 
-For the most part, the boring, plain output is all we need. Sometimes, however, we want our output to make more of an impact and catch the users eye, for example when displaying a warning message, by using a different color or style.
+For the most part, the boring, plain output is all we need. Sometimes, however, we want our output to make more of an impact and catch the user's eye, for example when displaying a warning message, by using a different color or style.
 
 Luckily for us, there is a simple way to do just that.
 
