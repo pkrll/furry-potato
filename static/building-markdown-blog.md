@@ -170,12 +170,12 @@ And that is pretty much it. With this setup, I can just write up a post in Atom 
 So, with the following keystrokes, I just published this post:
 
 ```bash
-$ make INPUT=static/building-markdown-blog.md
+$ make publish push
 ```
 
 #### Bonus: Syntax highlighting
 
-To get proper syntax highlight for code blocks, I needed to add the ``highlight.js`` package. In the ``created`` property of the **Post** component, add the following lines:
+To get proper syntax highlight for code blocks, I needed to add the ``highlight.js`` package (thanks to [Shuhei Kagawa](https://shuheikagawa.com/blog/2015/09/21/using-highlight-js-with-marked/) for this solution). In the ``created`` property of the **Post** component, add the following lines:
 
 ```javascript
 import marked, { Renderer } from 'marked';
@@ -204,5 +204,3 @@ export default {
 	//...
 }
 ```
-
-Thanks to [Shuhei Kagawa](https://shuheikagawa.com/blog/2015/09/21/using-highlight-js-with-marked/) for the above solution!
