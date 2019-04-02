@@ -4,13 +4,13 @@ A tool for publishing posts. This script is used for my Markdown-based [blog](ht
 
 #### Usage
 
-To save a draft (but not publish it) of an article in the ``drafts`` directory, type the following command:
+To save a draft of an article in the ``drafts`` directory (but not publish it), type the following command:
 
 ```bash
 $ make save push
 ```
 
-To publish an draft, type the following command:
+To publish a draft, type the following command:
 
 ```bash
 $ make publish push
