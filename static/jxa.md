@@ -109,7 +109,7 @@ function run(argv) {
 }
 ```
 
-Here we introduce the new method ``currentApplication`` and the property ``includeStandardAdditions``. The ``currentApplication`` method just returns the method calling the script. The ``includeStandardAdditions`` property adds some extra stuff, like dialogs or notifications, to the application object if set true. The third line just creates a new notification.
+Here we introduce the new method ``currentApplication`` and the property ``includeStandardAdditions``. The ``currentApplication`` method just returns the app calling the script. The ``includeStandardAdditions`` property adds some extra stuff, like dialogs or notifications, to the application object if set true. The third line just creates a new notification.
 
 #### JXA and ObjC
 
