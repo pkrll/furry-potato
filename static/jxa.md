@@ -66,7 +66,7 @@ function run(argv) {
 
 	console.log("Artist:\t\t " + track.artist());
 	console.log("Song:\t\t " + track.name());
-	console.log("Album:\t\t " + track.artist());
+	console.log("Album:\t\t " + track.album());
 	console.log("Length:\t\t " + getLength(track.duration()));
 	console.log("Number of plays: " + track.playedCount());
 	console.log("Popularity:\t " + track.popularity());
