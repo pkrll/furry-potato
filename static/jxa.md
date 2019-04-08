@@ -79,7 +79,7 @@ Running this script gives us the output:
 ❯ osascript test.js
 Artist:          Bugseed
 Song:            chapter
-Album:           Bugseed
+Album:           Fresh Jive
 Length:          1:38
 Number of plays: 0
 Popularity:      59
