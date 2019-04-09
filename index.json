@@ -2,6 +2,7 @@
   "posts": [
     {
       "title": "Scripting on the Mac with Javascript",
+      "image": "jxa.jpg",
       "summary": "While Applescript has long been the de facto language for Mac scripting, it is not the only one. In 2015, Apple introduced Javascript for Automation (JXA), bringing the popular front-end language into a whole new context.",
       "date": "2019-04-08T00:14:26.863Z",
       "path": "static/",
@@ -9,6 +10,7 @@
     },
     {
       "title": "Customizing the Console Output in Node",
+      "image": "consolelog.gif",
       "summary": "Sometimes the plain output of the Console.log is just not enough. Here's all you need to know to get some color in your console!",
       "date": "2019-04-01T21:19:27.036Z",
       "path": "static/",
@@ -16,6 +18,7 @@
     },
     {
       "title": "Building a Markdown-based blog with Vue + Github",
+      "image": "",
       "summary": "So, I've brought back the blog. This time, instead of using a traditional CMS, I decided to hack together my own Markdown-based blog. The twist: The posts are all stored in a repository on Github.",
       "date": "2019-04-01T15:00:52.494Z",
       "path": "static/",
