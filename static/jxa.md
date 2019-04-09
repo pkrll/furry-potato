@@ -1,5 +1,7 @@
 # Scripting on the Mac with Javascript
 
+![cover](images/jxa.jpg)
+
 ###### Keywords: macOS, Javascript, JXA, Applescript
 
 App scripting is one of those neat features of the Mac that I feel often gets overlooked. Although somewhat limited, it's a relatively simple way of automating applications and creating a more efficient workflow. While Applescript has long been the de facto language for Mac scripting, it is not the only one. In 2015, Apple introduced Javascript for Automation (JXA), bringing the popular front-end language into a whole new context.

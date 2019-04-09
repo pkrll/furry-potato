@@ -1,5 +1,7 @@
 # Customizing the Console Output in Node
 
+![cover](images/consolelog.gif)
+
 ###### Keywords: Javascript, Node, Console, console.log
 
 Working with Node, the ``console.log`` command is never far away. Be it either for debugging purposes or user interaction, the ``console`` module provides a simple way of outputting a string to the terminal.
