@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "title": "Using Github's Webhooks to automate deployment",
+      "date": "2019-04-10T14:43:09.685Z",
+      "path": "static/",
+      "name": "webhooks-and-node.md",
+      "image": "static/images/webhooks-node.jpg",
+      "summary": "Using Github's webhooks we can keep our local repositories in sync."
+    },
+    {
       "title": "Scripting on the Mac with Javascript",
       "image": "jxa.jpg",
       "summary": "While Applescript has long been the de facto language for Mac scripting, it is not the only one. Since 2015, you can also use Javascript.",
