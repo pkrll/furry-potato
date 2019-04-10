@@ -127,7 +127,7 @@ In my case, I just want to pull the latest changes from the repository. For that
 ```js
 const http = require('http');
 // Import the exec method
-const exec = require('child_process').exec;
+const exec = require('child_process').execSync;
 const path = "/path/to/the/local/repo";
 
 http.createServer((req, res) => {
@@ -140,7 +140,9 @@ http.createServer((req, res) => {
 		const signature = req.headers['x-hub-signature'];
 		if (verifySignature(signature, body)) {
 			// Perform the action:
-			exec("cd " + path + " && git pull");
+			exec("cd " + path + " && git pull", {
+				timeout: 10000
+			});
 			message = "Request received!";
 			status  = 200;
 		}
@@ -152,7 +154,9 @@ http.createServer((req, res) => {
 }).listen(3000);
 ```
 
-The ``exec`` call will ``cd`` in to the folder where my Github repository is set up, and perform ``git pull``.
+The ``exec`` call will ``cd`` in to the folder where my Github repository is set up, and perform ``git pull``. This is a synchronized call, as we'd want to wait for it to finish.
+
+Obviously, the above code is not truly safe. We would need to check the return code from the ``exec`` call to make sure that the command was perform successfully, for example by enclosing it in a ``try-catch`` clause. However, I'll leave that as an exercise for the reader.
 
 #### Setting up webhooks on Github
 
