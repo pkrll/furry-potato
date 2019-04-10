@@ -8,7 +8,7 @@ In a previous post, I described my new setup for the blog. In short, I used a re
 
 This was, however, only a temporary solution, as it's not really all that efficient to fetch Markdown files and images from an external source each time a visitor clicks on a post. Not only does it produce unnecessary traffic, it's also slower.
 
-#### Internal cache, external source
+#### Caching files
 
 A better solution is to cache the files locally and serve the readers those files, and only update the local cache when the external source (the Github repository) changes.
 
