@@ -156,7 +156,7 @@ http.createServer((req, res) => {
 
 The ``exec`` call will ``cd`` in to the folder where my Github repository is set up, and perform ``git pull``. This is a synchronized call, as we'd want to wait for it to finish.
 
-Obviously, the above code is not truly safe. We would need to check the return code from the ``exec`` call to make sure that the command was perform successfully, for example by enclosing it in a ``try-catch`` clause. However, I'll leave that as an exercise for the reader.
+Obviously, the above code is not truly safe. We would need to check the return code from the ``exec`` call to make sure that the command was performed successfully, for example by enclosing it in a ``try-catch`` clause. However, I'll leave that as an exercise for the reader.
 
 #### Setting up webhooks on Github
 
