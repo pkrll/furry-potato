@@ -141,7 +141,7 @@ const string = $.NSString.alloc.initWithUTF8String("Foo")
 
 which is equivalent to the Objective-C code:
 
-```objective-c
+```objc
 NSData *string = [[[NSString alloc] initWithUTF8String: "Foo"]
                                     dataUsingEncoding:NSUTF8StringEncoding];
 ```
