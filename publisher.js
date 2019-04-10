@@ -4,7 +4,8 @@ const color = require('./.support/color.js')();
 
 const paths = {
 	DRAFTS: "drafts/",
-	STATIC: "static/"
+	STATIC: "static/",
+	IMAGES: "static/images/"
 };
 
 class Publisher {
@@ -18,63 +19,59 @@ class Publisher {
 		this.indexFile = indexFile;
 	}
 
-	processFile(input) {
-		const data  = fs.readFileSync(input, 'utf8');
-		const lines = data.split("\n").filter( (element) => element != '');
-    const meta  = {
-			title: (lines.length > 1) ? lines[0].slice(2) : 'N/A',
-			summary: (lines.length > 2) ? lines[2] : 'N/A'
-		};
-
-		return meta;
-	}
-
 	run(option) {
-		const readline = require('readline').createInterface({
-			input: process.stdin,
-			output: process.stdout
-		});
+		const draft = this.selectDraft();
+		const image = this.selectImage();
+		const summary = this.readLine("\nWrite a short summary: ");
 
-		fs.readdir(paths.DRAFTS, (err, data) => {
-			const files = data.filter(file => file.endsWith(".md"));
+		const filePath  = paths.DRAFTS + draft;
+		const imagePath = paths.IMAGES + image;
 
-			if (files.length == 0) {
-				color.print("No unpublished files found.", color.colors.red);
-				process.exit(-1);
-			}
-
-			for (let index in files) {
-				const fileNum  = parseInt(index) + 1;
-				const fileName = files[index];
-				color.print(fileNum + ". " + fileName, color.colors.green);
-			}
-
-			readline.question("\nSelect a file to publish (or 'a' to abort): ", (index) => {
-				readline.close();
-				if (index == 'a') process.exit(-1);
-				this.selectFile(files, parseInt(index))
-			});
-		});
-	}
-
-	selectFile(files, index) {
-		if (index > files.length) {
-			color.print("Invalid selection!", color.colors.red);
-			process.exit(-1);
-		}
-
-		const filePath = paths.DRAFTS + files[index - 1];
-		this.publish(filePath);
-	}
-
-	publish(filePath) {
 		const date = new Date();
 
-		const metadata = this.processFile(filePath);
+		const metadata = this.processFile(this.filePath);
 		metadata.date  = date.toJSON();
 		metadata.path  = paths.STATIC;
 		metadata.name  = filePath.substr(filePath.lastIndexOf('/') + 1);
+		metadata.image = imagePath;
+		metadata.summary = summary;
 
+		this.publish(metadata);
+	}
+
+	selectDraft() {
+		const files = this.listDirectory(paths.DRAFTS, ".md");
+
+		if (files.length == 0) this.printError("No unpublished files found");
+
+		this.printFiles(files);
+		const question = "\nSelect a file to publish (or 'a' to abort): ";
+		const index = this.readLine(question);
+
+		if (index == 'a') process.exit(-1);
+		if (index > files.length) this.printError("Invalid selection!");
+
+		return files[index - 1];
+	}
+
+	selectImage() {
+		const files = this.listDirectory(paths.IMAGES, "");
+
+		if (files.length == 0) this.printError("No images found");
+
+		color.print("0. None", color.colors.green);
+
+		this.printFiles(files);
+		const question = "\nSelect a cover image (or 'a' to abort): ";
+		const index = this.readLine(question);
+
+		if (index == 'a') process.exit(-1);
+		if (index > files.length) this.printError("Invalid selection!");
+
+		return files[index - 1];
+	}
+
+	publish(metadata) {
 		fs.readFile(this.indexFile, (err, data) => {
 			if (err) throw err;
 
@@ -89,8 +86,45 @@ class Publisher {
 		});
 	}
 
+	listDirectory(path, fileExtension) {
+		let files = fs.readdirSync(path);
+		files = files.filter(file => file.endsWith(fileExtension));
+
+		return files;
+	}
+
+	printFiles(files) {
+		for (let index in files) {
+			const fileNum  = parseInt(index) + 1;
+			const fileName = files[index];
+			color.print(fileNum + ". " + fileName, color.colors.green);
+		}
+	}
+
+	readLine(question) {
+		const stdin = require('readline-sync');
+		const input = stdin.question(question);
+
+		return input;
+	}
+
+	processFile(input) {
+		const data  = fs.readFileSync(input, 'utf8');
+		const lines = data.split("\n").filter( (element) => element != '');
+		const meta  = {
+			title: (lines.length > 1) ? lines[0].slice(2) : 'N/A',
+		};
+
+		return meta;
+	}
+
 	move(oldPath, newPath) {
 		fs.rename(oldPath, newPath, (err) => { if (err) throw err; });
+	}
+
+	printError(error) {
+		color.print(error, color.colors.red);
+		process.exit(-1);
 	}
 
 }
