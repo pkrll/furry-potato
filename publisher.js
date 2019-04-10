@@ -1,5 +1,6 @@
 'use strict'
 const fs = require('fs');
+const path = require('path');
 const color = require('./.support/color.js')();
 
 const paths = {
@@ -25,14 +26,14 @@ class Publisher {
 		const summary = this.readLine("\nWrite a short summary: ");
 
 		const filePath  = paths.DRAFTS + draft;
-		const imagePath = paths.IMAGES + image;
+		const imagePath = paths.IMAGES + path.basename(image);
 
 		const date = new Date();
 
 		const metadata = this.processFile(filePath);
 		metadata.date  = date.toJSON();
 		metadata.path  = paths.STATIC;
-		metadata.name  = filePath.substr(filePath.lastIndexOf('/') + 1);
+		metadata.name  = path.basename(filePath);
 		metadata.image = imagePath;
 		metadata.summary = summary;
 

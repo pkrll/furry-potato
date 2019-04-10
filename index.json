@@ -5,7 +5,7 @@
       "date": "2019-04-10T14:43:09.685Z",
       "path": "static/",
       "name": "webhooks-and-node.md",
-      "image": "static/images/webhooks-node.jpg",
+      "image": "webhooks-node.jpg",
       "summary": "Using Github's webhooks we can keep our local repositories in sync."
     },
     {
