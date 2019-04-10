@@ -46,7 +46,7 @@ http.createServer((req, res) => {
 
 For those not familiar with **NodeJS** or the **HTTP** module, the above code basically creates a server that listens on port 3000. Every time someone access the server, the visitor will be greeted with the text ``Hello, World!``. The ``writeHead()`` method sets the HTTP header for the response, in this case a ``200`` status code and the content-type set to ``text/html``.
 
-Try it out by running ``node server.js`` in the terminal and then accessing <a href="localhost:3000" target="_blank">__localhost:3000__</a>.
+Try it out by running ``node server.js`` in the terminal and then accessing localhost on port 3000.
 
 #### A bit more about Github's webhooks
 
