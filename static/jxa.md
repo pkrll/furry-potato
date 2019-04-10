@@ -50,6 +50,8 @@ Not every application is scriptable. To see which ones, we can open the Script D
 
 These are just a few of the available methods we can call on the ``Spotify`` instance using JXA.
 
+![script editor](images/scripteditor.jpg)
+
 #### Scripting Spotify
 
 Let's create a small script that outputs some basic information on the current playing track.
