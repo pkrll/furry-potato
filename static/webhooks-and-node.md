@@ -122,7 +122,7 @@ Here, we use the ``crypto`` module, to generate a ``SHA1 HMAC`` signature using 
 
 Now, we are ready to actually perform an action whenever an authenticated request is made.
 
-In my case, I just want to pull the latest changes from the repository. For that, I will use the ``exec`` method of the ``child_process`` module.
+In my case, I just want to pull the latest changes from the repository. For that, I will use the ``execSync`` method of the ``child_process`` module.
 
 ```js
 const http = require('http');
