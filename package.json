@@ -1,0 +1,11 @@
+{
+  "name": "furry-potato",
+  "main": "publisher.js",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Ardalan Samimi <ardalan@saturnfive.se>",
+  "private": true,
+  "dependencies": {
+    "readline-sync": "^1.4.9"
+  }
+}
