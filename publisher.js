@@ -29,14 +29,14 @@ class Publisher {
 
 		const date = new Date();
 
-		const metadata = this.processFile(this.filePath);
+		const metadata = this.processFile(filePath);
 		metadata.date  = date.toJSON();
 		metadata.path  = paths.STATIC;
 		metadata.name  = filePath.substr(filePath.lastIndexOf('/') + 1);
 		metadata.image = imagePath;
 		metadata.summary = summary;
 
-		this.publish(metadata);
+		this.publish(filePath, metadata);
 	}
 
 	selectDraft() {
@@ -71,7 +71,7 @@ class Publisher {
 		return files[index - 1];
 	}
 
-	publish(metadata) {
+	publish(filePath, metadata) {
 		fs.readFile(this.indexFile, (err, data) => {
 			if (err) throw err;
 
