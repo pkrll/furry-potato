@@ -2,33 +2,54 @@
 
 ###### Keywords: DTrace, macOS, DevOps, kernel tracing
 
-These days, there are a lot of tools for troubleshooting, debugging and profiling out there, that we as software developers need to learn to master. Tools such as XCode/Instruments, ``lldb`` or ``valgrind`` help us understand what's going on during the execution of our applications. Perhaps we want to determine how much resources they use, follow the evolution of some data structure or just find and squash a bug.
+There are a lot of tools for troubleshooting, debugging and profiling out there that we as software developers need to learn to master. Tools such as ``Instruments``, ``lldb`` or ``valgrind`` help us understand what's going on during the execution of our applications.
 
-However, as most of these tool operate in user space, we're usually left in the dark when it comes to measuring how they interact with the operating system.
+Perhaps we want to determine how much resources they use, follow the evolution of some data structure or just find and squash a bug. For the most part, this is all we need. Sometimes, though, we want to dig a bit deeper. We might need a better low level-view of how our app interacts with the operating system.
+
+Unfortunately, most of these tools operate in user space, and therefore offer a process-centric view only.
 
 Enter: DTrace. A powerful tool used to trace and probe running applications, DTrace allows us to examine the entire software stack and gain insights into the behaviour of both a user program and the operating system. This includes, for example, which system calls are made or which system files the process accesses.
 
-In this post, I'm gonna give a small introduction into the wondrous world of this diagnostics tool and showcase some of its strengths.
+In this post, I'll give a small introduction into the wondrous world of this diagnostics tool and showcase some of its strengths.
 
 #### What is DTrace, really?
 
-DTrace stands for Dynamic Tracing and is both a framework and an interpreter for the D language (not to be confused with the other D programming language). While it was first created for the Sun Solaris in 2005, it has since been ported to a number of other operating systems. Apart from Solaris, DTrace is available for BSD, some Linux distros and even macOS, which it comes shipped with by default. Today, efforts are being made to create a cross-platform tool through the <a href="https://github.com/opendtrace" target="_blank">__OpenDTrace__</a> project.
+DTrace stands for Dynamic Tracing and is both a framework and an interpreter for the ``D`` language (not to be confused with the other ``D`` programming language). While it was first created for the Sun Solaris in 2005, it has since been ported to a number of other operating systems. Apart from Solaris, DTrace is available for BSD, some Linux distributions and macOS, which it comes shipped with by default. DTrace is even available for the Playstation Vita!
 
-DTrace relies on so called *probes*, that it dynamically inserts into a process. These probes can be thought of as sensors that triggers whenever a certain event happens, for example a system call or entry into a kernel function. If an action is bound to a probe, DTrace will perform it when that probe activates (or *fires*).
+Today, efforts are being made to create a cross-platform tool through the <a href="https://github.com/opendtrace" target="_blank">__OpenDTrace__</a> project.
 
+DTrace relies on so called *probes*. These probes are dynamically inserted into a process and can be thought of as sensors that triggers whenever a certain event occurs, for example a system call or entry into a kernel function. If an *action* is bound to a probe, DTrace will perform it when that probe activates (or *fires*).
 
+DTrace can be invoked in two ways. Either as a one-liner directly in the Terminal, or with a script passed to it:
+
+```bash
+$ sudo dtrace -n 'dtrace:::BEGIN { printf("Hello World!\n"); }'
+$ sudo dtrace -s script.d
+```
 
 #### The anatomy of a DTrace script
 
-DTrace can be invoked in
+The structure of a DTrace script is pretty simple. It consists of clauses that describe a probe. These clauses can contain a predicate and in the body we can define a number of statements to be evaluated when the probe fires.
 
 ```c
 provider:module:function:name
 /predicate/
 {
-  //action statements
+  action statements
 }
 ```
+
+The first line is the probe description. This is a 4-tuple that identifies a probe.
+
+The first part of the description is the ``provider``, an entity (e.g. ``syscall`` or ``lockstat``) that makes probes available to DTrace for instrumentation. The ``module`` field lets us limit our scope to a library, while ``function`` is the function we want to probe. ``name`` is the name of the probe.
+
+We can omit one or more of these components of the description.
+
+The ``predicate`` is an expression that allows us to only execute the action when certain conditions (described in the predicate) are met. For example, the predicate ``/execname == "foo"/``, ensures us that the action statements are performed only if the process triggering the probe is named ``foo``. The predicate is optional.
+
+The action statements, the actual code to be run, are placed between the curly-braces.
+
+Before we get started, we need to make sure we can run DTrace (if you are not a macOS user, you can skip this next part).
 
 #### First things first
 
@@ -43,8 +64,56 @@ $ csrutil clear
 $ csrutil enable --without dtrace
 ```
 
-Upon restart, we can run DTrace normally!
+Upon restart, we can run DTrace normally! Let's try it out.
 
+#### Our first script
+
+Let's start with a small script that lists all processes that launches. Write the following probe and save it as a file ``trace.d``:
+
+```c
+proc:::exec-success {
+	printf("%s", execname);
+}
+```
+
+Here, we specify the probe ``exec-success`` of the ``proc`` provider. This probe fires whenever a process image has been loaded. The only action we perform is to print the name of the process being launched.
+
+Run it in the Terminal:
+
+```bash
+$ sudo dtrace -s trace.d
+```
+
+This should give you the following output.
+
+```bash
+dtrace: script 'trace.d' matched 1 probe
+CPU     ID                    FUNCTION:NAME
+  3   1264 dtrace_thread_bootstrap:exec-success python3.7
+  0   1264 dtrace_thread_bootstrap:exec-success Python
+  1   1264 dtrace_thread_bootstrap:exec-success sh
+  0   1264 dtrace_thread_bootstrap:exec-success uname
+  0   1264 dtrace_thread_bootstrap:exec-success file
+  1   1264 dtrace_thread_bootstrap:exec-success git
+  1   1264 dtrace_thread_bootstrap:exec-success sh
+  2   1264 dtrace_thread_bootstrap:exec-success systemsetup
+  0   1264 dtrace_thread_bootstrap:exec-success xpcproxy
+  0   1264 dtrace_thread_bootstrap:exec-success nginx
+```
+
+In my case, saving a file in ``Atom`` is apparently dependent on some ``Python`` script, as well as the processes ``sh``, ``uname``, ``file`` and ``git``.
+
+DTrace probes can also provide up to ten arguments, accessible by the ``arg0``, ``arg1``, ... ``arg9`` built-in variables.
+
+As an example, we can use the ``exec`` probe, which provides the path of the new process image as its first argument, to print the name of a process being launched along with the path to its image.
+
+```c
+proc:::exec {
+	printf("%s at %s", execname, stringof(arg0));
+}
+```
+
+You might notice we used a built-in instruction here, ``stringof``. This is a special function that converts a pointer in the kernel space into a string. For string pointers in userland, we can use the ``copyinstr`` function.
 
 #### Tip of the iceberg
 
