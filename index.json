@@ -6,7 +6,7 @@
       "path": "static/",
       "name": "darkmode.md",
       "image": "darkmodecover.jpg",
-      "summary": "With the release of macOS Mojave 10.14.4 and Safari 12.1, websites can now automatically adapt their themes to complement Mojave's Dark Mode appearance."
+      "summary": "With the release of Safari 12.1, websites can now automatically adapt their themes to complement Mojave's Dark Mode appearance."
     },
     {
       "title": "Using Github's Webhooks to automate deployment",
