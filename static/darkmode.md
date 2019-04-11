@@ -27,6 +27,6 @@ To enable this feature on the web, we only need to add the media query ``prefers
 
 This will change the ``background`` and ``color`` properties of the ``body`` element on the page only when the user has Dark Mode enabled.
 
-It is worth noting that this feature is as of now only supported in macOS Mojave 10.14.4 and Safari 12.1, although Firefox will soon support it to with the release of Firefox 67 in May.
+It is worth noting that this feature is as of now only supported in macOS Mojave 10.14.4 and Safari 12.1, although Firefox will soon support it too, with the release of Firefox 67 in May.
 
 You can read more about the new features introduced with Safari 12.1 on <a href="https://webkit.org/blog/8718/new-webkit-features-in-safari-12-1/" target="_blank">__Webkits blog__</a>.
