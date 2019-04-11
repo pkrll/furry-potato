@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "title": "Enable Dark Mode for the Web",
+      "date": "2019-04-11T11:57:19.334Z",
+      "path": "static/",
+      "name": "darkmode.md",
+      "image": "static/images/darkmode.png",
+      "summary": "With the release of macOS Mojave 10.14.4 and Safari 12.1, websites can now automatically adapt their themes to complement Mojave's Dark Mode appearance."
+    },
+    {
       "title": "Using Github's Webhooks to automate deployment",
       "date": "2019-04-10T14:43:09.685Z",
       "path": "static/",
