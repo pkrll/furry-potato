@@ -26,7 +26,7 @@ class Publisher {
 		const summary = this.readLine("\nWrite a short summary: ");
 
 		const filePath  = paths.DRAFTS + draft;
-		const imagePath = paths.IMAGES + path.basename(image);
+		const imagePath = path.basename(image);
 
 		const date = new Date();
 
