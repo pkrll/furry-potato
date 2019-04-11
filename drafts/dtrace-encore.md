@@ -84,7 +84,7 @@ Run it in the Terminal:
 $ sudo dtrace -s trace.d
 ```
 
-This should give you the following output.
+While running, open a few processes and return to the Terminal. Abort the script the ``CTRL+C``. You should be met with a similar output:
 
 ```bash
 dtrace: script 'trace.d' matched 1 probe
@@ -99,6 +99,7 @@ CPU     ID                    FUNCTION:NAME
   2   1264 dtrace_thread_bootstrap:exec-success systemsetup
   0   1264 dtrace_thread_bootstrap:exec-success xpcproxy
   0   1264 dtrace_thread_bootstrap:exec-success nginx
+^C
 ```
 
 In my case, saving a file in ``Atom`` is apparently dependent on some ``Python`` script, as well as the processes ``sh``, ``uname``, ``file`` and ``git``.
@@ -113,7 +114,20 @@ proc:::exec {
 }
 ```
 
-You might notice we used a built-in instruction here, ``stringof``. This is a special function that converts a pointer in the kernel space into a string. For string pointers in userland, we can use the ``copyinstr`` function.
+Running the above script gives me the following output:
+
+```bash
+$ sudo dtrace -s trace.d
+dtrace: script 'trace.d' matched 2 probes
+CPU     ID      FUNCTION:NAME
+  0   2133   posix_spawn:exec Atom Helper at /usr/local/sbin/python3
+  0   2133   posix_spawn:exec Atom Helper at /Users/ardalansamimi/Public/Git/encore/release/python3
+...
+```
+
+You might have notice that we used a weird function, ``stringof``. This is a built-in function that converts a pointer in the kernel space into a string. There are several other built-in functions and variables that we can use, for example ``copyinstr`` that is the user space-counterpart of ``stringof``.
+
+There are
 
 #### Tip of the iceberg
 
