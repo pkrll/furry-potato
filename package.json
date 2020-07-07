@@ -6,6 +6,7 @@
   "author": "Ardalan Samimi <ardalan@saturnfive.se>",
   "private": true,
   "dependencies": {
+    "reading-time": "^1.2.0",
     "readline-sync": "^1.4.9"
   }
 }

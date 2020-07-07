@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const color = require('./.support/color.js')();
+const readingTime = require('reading-time');
 
 const paths = {
 	DRAFTS: "drafts/",
@@ -36,6 +37,7 @@ class Publisher {
 		metadata.name  = path.basename(filePath);
 		metadata.image = imagePath;
 		metadata.summary = summary;
+		metadata
 
 		this.publish(filePath, metadata);
 	}
@@ -114,6 +116,7 @@ class Publisher {
 		const lines = data.split("\n").filter( (element) => element != '');
 		const meta  = {
 			title: (lines.length > 1) ? lines[0].slice(2) : 'N/A',
+			readingTime: readingTime(data)
 		};
 
 		return meta;
