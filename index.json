@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "title": "Not Enough Space for Xcode? Here's How To Fix It",
+      "date": "2020-07-07T10:46:49.464Z",
+      "path": "static/",
+      "name": "not-enough-disk-space.md",
+      "image": "diskspace.jpg",
+      "summary": "How to clean out purgeable data when the system doesn't."
+    },
+    {
       "title": "Enable Dark Mode for the Web",
       "date": "2019-04-11T11:57:19.334Z",
       "path": "static/",
