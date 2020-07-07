@@ -6,7 +6,13 @@
       "path": "static/",
       "name": "not-enough-disk-space.md",
       "image": "diskspace.jpg",
-      "summary": "How to clean out purgeable data when the system doesn't."
+      "summary": "How to clean out purgeable data when the system doesn't.",
+      "readingTime": {
+        text: '3 min read',
+        minutes: 2.96,
+        time: 177600,
+        words: 592
+      }
     },
     {
       "title": "Enable Dark Mode for the Web",
