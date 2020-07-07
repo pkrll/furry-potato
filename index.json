@@ -8,10 +8,10 @@
       "image": "diskspace.jpg",
       "summary": "How to clean out purgeable data when the system doesn't.",
       "readingTime": {
-        text: '3 min read',
-        minutes: 2.96,
-        time: 177600,
-        words: 592
+        "text": "3 min read",
+        "minutes": 2.96,
+        "time": 177600,
+        "words": 592
       }
     },
     {
