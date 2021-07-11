@@ -40,13 +40,15 @@ Not every application is scriptable. To see which ones, we can open the Script D
 
 **Spotify Suite:**
 
-| Method  | Description  |
-|---------|--------------|
-| nextTrack |  Skip to the next track. |
+```
+| Method        |  Description                 |
+|---------------|------------------------------|
+| nextTrack     |  Skip to the next track.     |
 | previousTrack |  Skip to the previous track. |
-| playpause |  Toggle play/pause. |
-| pause |  Pause playback. |
-| ... |  ... |
+| playpause     |  Toggle play/pause.          |
+| pause         |  Pause playback.             |
+| ...           |  ...                         |
+```
 
 These are just a few of the available methods we can call on the ``Spotify`` instance using JXA.
 
@@ -121,7 +123,7 @@ Here we introduce the new method ``currentApplication`` and the property ``inclu
 
 Like Applescript, JXA comes with a built-in Objective-C bridge allowing you to access native frameworks using Javascript. Basically, the bridge enables you to import any Cocoa framework. In essence, you could build Cocoa apps with JXA. Pretty neat, huh?
 
-As I have never personally done that, I'm sticking to the basics here. For more information on creating actual apps, read <a href="https://tylergaw.com/articles/building-osx-apps-with-js/" target="_blank">__Tyler Gaw's excellent post__</a> on that.
+As I have never personally done that, I'm sticking to the basics here. For more information on creating actual apps, read __[Tyler Gaw's excellent post](https://tylergaw.com/articles/building-osx-apps-with-js/)__</a> on that.
 
 Keeping with the Spotify theme, let's use ObjC to copy the current track's Spotify URL to the pasteboard.
 
