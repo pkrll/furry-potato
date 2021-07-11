@@ -172,4 +172,4 @@ As you might have noticed, manipulating the ``NSPasteboard`` is pretty similar t
 
 #### More resources
 
-And that's it. Obviously, there are a lot more to cover here, and perhaps I'll do a more in-depth post in the future. For now, if you're interested, there are a lot more resources out there. I recommend starting with the <a href="https://github.com/JXA-Cookbook/JXA-Cookbook" target="_blank">__JXA Cookbook__</a>.
+And that's it. Obviously, there are a lot more to cover here, and perhaps I'll do a more in-depth post in the future. For now, if you're interested, there are a lot more resources out there. I recommend starting with the __[JXA Cookbook](https://github.com/JXA-Cookbook/JXA-Cookbook)__.
